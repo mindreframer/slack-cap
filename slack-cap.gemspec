@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Slack::Cap::VERSION
   spec.authors       = ["Roman Heinrich"]
   spec.email         = ["roman.heinrich@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Capistrano plugin to enable notifications to Slack}
+  spec.description   = spec.summary
+  spec.homepage      = "https://github.com/mindreframer/slack-cap"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

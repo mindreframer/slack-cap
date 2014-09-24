@@ -35,6 +35,10 @@
     $ MSG='fixing that nasty bug...' cap production deploy
 
 
+## Alternatives
+  - https://github.com/supremegolf/slackistrano (look very flexible)
+
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/slack-cap/fork )

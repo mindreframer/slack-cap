@@ -37,6 +37,7 @@
 
 ## Alternatives
   - https://github.com/supremegolf/slackistrano (look very flexible)
+  - https://github.com/j-mcnally/capistrano-slack (not very clean code, though...)
 
 
 ## Contributing

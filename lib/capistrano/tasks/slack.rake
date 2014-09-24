@@ -1,36 +1,6 @@
-class SlackNotifierWrapper
-  attr_accessor :team, :token, :channel, :app, :username
-
-  def initialize(opts)
-    @app      = opts.fetch(:app)
-    @team     = opts.fetch(:team)
-    @token    = opts.fetch(:token)
-    @channel  = opts.fetch(:channel)
-    @username = opts[:username] ||'capistrano'
-  end
-
-  def deployer
-    ENV['GIT_AUTHOR_NAME'] || `git config user.name`.chomp
-  end
-
-  def reason
-    raise "provice a reason with MSG=... !" unless ENV['MSG']
-    ENV['MSG']
-  end
-
-  def notify(msg, icon_emoji: ':rocket:')
-    notifier.ping(msg, icon_emoji: icon_emoji)
-  end
-
-  def notifier
-    @notifier ||= ::Slack::Notifier.new(team, token, channel: channel, username: username)
-  end
-end
-
-
 namespace :slack do
   def wrapper
-    @wrapper ||= SlackNotifierWrapper.new(
+    @wrapper ||= Slack::Cap::SlackNotifierWrapper.new(
       app:      fetch(:slack_app),
       team:     fetch(:slack_team),
       token:    fetch(:slack_token),
@@ -58,12 +28,10 @@ namespace :slack do
   end
 
   task :finished do
-    begin
-      start_time = fetch(:start_time)
-      elapsed    = Time.now.to_i - start_time.to_i
-      msg        = "#{msg_prefix} - finished - #{elapsed} seconds."
-      wrapper.notify(msg)
-    end
+    start_time = fetch(:start_time)
+    elapsed    = Time.now.to_i - start_time.to_i
+    msg        = "#{msg_prefix} - finished - #{elapsed} seconds."
+    wrapper.notify(msg)
   end
 
   before 'deploy', 'slack:starting'

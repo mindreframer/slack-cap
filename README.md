@@ -26,6 +26,8 @@
     set :slack_team,     'my-subdomain-on-slack.com'
     set :slack_token,    'XXXXXXXXXXXX'
     set :slack_channel,  '#deployments'
+
+    # optional param, defaults to 'capistrano'
     set :slack_username, 'capistrano'
 
 

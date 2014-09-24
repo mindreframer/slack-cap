@@ -30,7 +30,7 @@ end
 
 namespace :slack do
   def wrapper
-    @wrapper ||= SlackNotifierWrapper.new(
+    @wrapper ||= SlackNotifierWrapper.new(
       app:      fetch(:slack_app),
       team:     fetch(:slack_team),
       token:    fetch(:slack_token),

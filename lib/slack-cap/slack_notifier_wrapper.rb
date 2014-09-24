@@ -16,7 +16,7 @@ module Slack
       end
 
       def reason
-        raise "provice a reason with MSG=... !" unless ENV['MSG']
+        raise "provide a reason with MSG=... !" unless ENV['MSG']
         ENV['MSG']
       end
 
